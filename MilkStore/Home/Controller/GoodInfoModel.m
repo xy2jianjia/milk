@@ -9,5 +9,10 @@
 #import "GoodInfoModel.h"
 
 @implementation GoodInfoModel
-
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    
+}
+-(id)valueForUndefinedKey:(NSString *)key{
+    return nil;
+}
 @end

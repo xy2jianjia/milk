@@ -10,4 +10,9 @@
 
 @interface GoodInfoModel : NSObject
 
+@property (nonatomic,assign) NSInteger id;
+@property (nonatomic,copy) NSString *name;
+@property (nonatomic,copy) NSString *image;
+@property (nonatomic,assign) NSInteger count;
+@property (nonatomic,assign) CGFloat price;
 @end

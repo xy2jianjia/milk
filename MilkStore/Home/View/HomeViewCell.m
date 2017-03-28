@@ -48,7 +48,7 @@
     CGFloat width = self.bounds.size.width;
     _goodImageV = [[UIImageView alloc]init];
     _goodImageV.frame = CGRectMake(0, 0, width, width);
-    _goodImageV.image = [UIImage imageNamed:@"timg"];
+//    _goodImageV.image = [UIImage imageNamed:@"timg"];
     _goodImageV.clipsToBounds = YES;
     _goodImageV.contentMode = UIViewContentModeScaleAspectFill;
     [self.contentView addSubview:_goodImageV];
@@ -57,7 +57,7 @@
     _goodTitleLabel.frame = CGRectMake(0, CGRectGetMaxY(_goodImageV.frame), width, 40);
     _goodTitleLabel.font = [UIFont systemFontOfSize:12];
     _goodTitleLabel.textAlignment = NSTextAlignmentCenter;
-    _goodTitleLabel.text = @"创维（Skyworth）55H9A 55英寸超薄 无边框 25核4K超高清智能电视(黑色)";
+//    _goodTitleLabel.text = @"创维（Skyworth）55H9A 55英寸超薄 无边框 25核4K超高清智能电视(黑色)";
     _goodTitleLabel.numberOfLines = 2;
     [self.contentView addSubview:_goodTitleLabel];
     
@@ -79,6 +79,13 @@
     [self.contentView addSubview:_cartButton];
     
 }
-
+-(void)setGoodInfoModel:(GoodInfoModel *)goodInfoModel{
+    NSString *imageUrl = goodInfoModel.image;
+    [_goodImageV sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"list_item_icon"]];
+    NSString *name = goodInfoModel.name;
+    _goodTitleLabel.text = name;
+    CGFloat price = goodInfoModel.price;
+    _priceLabel.text = [NSString stringWithFormat:@"¥ %.2f",price];
+}
 
 @end

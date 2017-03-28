@@ -19,6 +19,12 @@
 #import "HomeLayout.h"
 #import "NSObject+fontSize.h"
 #import "NSObject+Date.h"
+#import "UIImageView+WebCache.h"
+#import <UMSocialCore/UMSocialCore.h>
+#import "GoodInfoModel.h"
+#import "UserInfoModel.h"
+#import "SDCycleScrollView.h"
+#import "DetailViewController.h"
 
 #define screenSize [UIScreen mainScreen].bounds.size
 #define SCREEN_WIDTH  screenSize.width

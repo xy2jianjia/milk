@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "GoodInfoModel.h"
 @interface HomeViewCell : UICollectionViewCell
+
+@property (nonatomic,strong) GoodInfoModel *goodInfoModel;
 
 @end

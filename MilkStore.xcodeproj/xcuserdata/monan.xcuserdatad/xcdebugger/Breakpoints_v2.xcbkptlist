@@ -4,18 +4,28 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MilkStore/Home/View/HomeLayout.m"
-            timestampString = "510043189.739602"
+            filePath = "MilkStore/Detail/VIew/DetailImageGroupCell.m"
+            timestampString = "512378032.581254"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "-collectionViewContentSize"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "-configViews"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +35,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MilkStore/Home/View/HomeLayout.m"
-            timestampString = "510043189.739602"
+            filePath = "MilkStore/Suppot/SDCycleScrollView/SDCollectionViewCell.m"
+            timestampString = "512378594.048185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "-shouldInvalidateLayoutForBoundsChange:"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-setupImageView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MilkStore/Detail/Controller/DetailViewController.m"
+            timestampString = "512384626.715716"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-configBottomView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

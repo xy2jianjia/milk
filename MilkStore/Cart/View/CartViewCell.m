@@ -43,7 +43,7 @@
     CGFloat width = 90;
     _goodImageV = [[UIImageView alloc]init];
     _goodImageV.frame = CGRectMake(5, 5, width, width);
-    _goodImageV.image = [UIImage imageNamed:@"timg"];
+    _goodImageV.image = [UIImage imageNamed:@"list_item_icon"];
     _goodImageV.clipsToBounds = YES;
     _goodImageV.contentMode = UIViewContentModeScaleAspectFill;
     [self.contentView addSubview:_goodImageV];

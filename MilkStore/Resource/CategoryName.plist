@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+    <dict>
+        <key>id</key>
+        <string>500</string>
+        <key>name</key>
+        <string>其他</string>
+    </dict>
+    <dict>
+        <key>id</key>
+        <string>400</string>
+        <key>name</key>
+        <string>常温牛奶类</string>
+    </dict>
+    <dict>
+        <key>id</key>
+        <string>300</string>
+        <key>name</key>
+        <string>饮料类</string>
+    </dict>
+	<dict>
+		<key>id</key>
+		<string>200</string>
+		<key>name</key>
+		<string>零嘴类</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>100</string>
+		<key>name</key>
+		<string>牛奶</string>
+	</dict>
+</array>
+</plist>
