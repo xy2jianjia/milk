@@ -39,6 +39,7 @@
     RootViewController *vc = [[RootViewController alloc]init];
 //    UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:vc];
     _window.rootViewController = vc;
+    [RongCloud initializationRC];
 }
 
 

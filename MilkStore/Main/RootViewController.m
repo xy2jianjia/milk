@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-
+#import "ConversationController.h"
 @interface RootViewController ()
 
 @end
@@ -27,7 +27,8 @@
     nc1.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"home_normal"] selectedImage:[UIImage imageNamed:@"home_selected"]];
     
     
-    MessageViewController *messageVc = [[MessageViewController alloc]initWithStyle:(UITableViewStyleGrouped)];
+//    MessageViewController *messageVc = [[MessageViewController alloc]initWithStyle:(UITableViewStyleGrouped)];
+    ConversationController *messageVc = [[ConversationController alloc]init];
     UINavigationController *nc2 = [[UINavigationController alloc]initWithRootViewController:messageVc];
     nc2.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"消息" image:[UIImage imageNamed:@"message_normal"] selectedImage:[UIImage imageNamed:@"message_selected"]];
     

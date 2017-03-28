@@ -25,7 +25,11 @@
 #import "UserInfoModel.h"
 #import "SDCycleScrollView.h"
 #import "DetailViewController.h"
-
+#import <RongIMKit/RongIMKit.h>
+#import "AFNetworking.h"
+#import "HttpOperation.h"
+#import "RongCloud.h"
+#import "JSONKit.h"
 #define screenSize [UIScreen mainScreen].bounds.size
 #define SCREEN_WIDTH  screenSize.width
 #define SCREEN_HEIGHT  screenSize.height
