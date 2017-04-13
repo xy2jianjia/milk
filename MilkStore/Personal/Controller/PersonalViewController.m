@@ -9,12 +9,21 @@
 #import "PersonalViewController.h"
 #import "PersonalHeaderCell.h"
 #import "PersonalCell.h"
-@interface PersonalViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "UserDetailViewController.h"
+@interface PersonalViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIActionSheetDelegate>
 @property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) UserInfoModel *userInfo;
+
 @end
 @implementation PersonalViewController
 
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    _userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];
+    NSIndexSet *index = [NSIndexSet indexSetWithIndex:0];
+    [self.tableView reloadSections:index withRowAnimation:(UITableViewRowAnimationAutomatic)];
+    self.tabBarController.tabBar.hidden = NO;
+}
 - (UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:(UITableViewStyleGrouped)];
@@ -37,10 +46,15 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         PersonalHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"headercell" forIndexPath:indexPath];
-        UserInfoModel *userInfo = [[UserInfoModel alloc]init];
-        userInfo.userId = 1001;
-        userInfo.userName = @"桂纶镁";
-        userInfo.headerImageUrl = @"http://img.pconline.com.cn/images/upload/upc/tx/photoblog/1309/04/c7/25263323_25263323_1378286758341_mthumb.jpg";
+        UserInfoModel *userInfo = _userInfo;
+        if (!userInfo) {
+            userInfo = [[UserInfoModel alloc]init];
+            userInfo.userName = @"";
+            userInfo.nickName = @"请登录/注册";
+            userInfo.headerImageUrl = @"";
+        }else{
+            userInfo.headerImageUrl = [self getImage];
+        }
         cell.userInfo = userInfo;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
@@ -73,6 +87,24 @@
         return cell;
     }
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        UserInfoModel *userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];
+        if (!userInfo) {
+            LoginViewController *vc = [[LoginViewController alloc]init];
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+            [self presentViewController:nav animated:YES completion:^{
+                
+            }];
+        }else{
+            UserDetailViewController *vc = [[UserDetailViewController alloc]initWithStyle:(UITableViewStyleGrouped)];
+//            self.navigationController.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+            self.navigationController.hidesBottomBarWhenPushed = YES;
+        }
+    }
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         return 80;
@@ -90,7 +122,15 @@
     [self.tableView registerClass:[PersonalHeaderCell class] forCellReuseIdentifier:@"headercell"];
     
 }
-
+- (NSString *)getImage{
+    NSString *cache = [self cachePath];
+    NSString *fullPath = [cache stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",self.imei]];
+    return fullPath;
+}
+- (NSString *)cachePath{
+    NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
+    return cachePath;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

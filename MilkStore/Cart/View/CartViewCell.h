@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CartViewCell : UITableViewCell
+typedef void(^SelectedBlock)(BOOL isSelected);
 
+@interface CartViewCell : UITableViewCell
+@property (nonatomic,strong) SelectedBlock selectedBlock;
+@property (nonatomic,strong) CartModel *cartModel;
+@property (nonatomic,assign) BOOL isNeedHidden;
+- (void)setCartModel:(CartModel *)cartModel;
 @end

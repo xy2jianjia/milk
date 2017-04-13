@@ -41,13 +41,14 @@
     dispatch_once(&onceToken, ^{
         self.frame = CGRectMake(0, SCREEN_HEIGHT - 40, SCREEN_WIDTH, 40);
         _collectionBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        _collectionBtn.frame = CGRectMake(0, 0, CGRectGetHeight(self.bounds), CGRectGetHeight(self.bounds));
-        _collectionBtn.backgroundColor = [UIColor grayColor];
+        _collectionBtn.frame = CGRectMake(10, 10, CGRectGetHeight(self.bounds) - 20, CGRectGetHeight(self.bounds) - 20);
+//        _collectionBtn.backgroundColor = [UIColor grayColor];
+        [_collectionBtn setBackgroundImage:[UIImage imageNamed:@"shopdetail_wangwang"] forState:(UIControlStateNormal)];
         [_collectionBtn addTarget:self action:@selector(collectionBtnAction) forControlEvents:(UIControlEventTouchUpInside)];
         [self addSubview:_collectionBtn];
         
         _addCartBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        _addCartBtn.frame = CGRectMake(CGRectGetMaxX(_collectionBtn.frame), 0, (SCREEN_WIDTH - 30)/2, CGRectGetHeight(self.bounds));
+        _addCartBtn.frame = CGRectMake(CGRectGetMaxX(_collectionBtn.frame)+5, 0, (SCREEN_WIDTH - 30)/2, CGRectGetHeight(self.bounds));
         [_addCartBtn setTitle:@"加入购物车" forState:(UIControlStateNormal)];
         [_addCartBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _addCartBtn.backgroundColor = [UIColor orangeColor];

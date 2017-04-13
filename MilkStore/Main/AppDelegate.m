@@ -32,9 +32,17 @@
     _window.backgroundColor = [UIColor whiteColor];
     [_window makeKeyAndVisible];
     [self configRootViewControllers];
+    [self saveTuringRobotInfo];
     return YES;
 }
-
+- (void)saveTuringRobotInfo{
+    UserInfoModel *turingUser = [[UserInfoModel alloc]init];
+    turingUser.userId = 1001;
+    turingUser.nickName = @"图灵客服";
+    turingUser.userName = @"10086";
+    turingUser.headerImageUrl = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490713789020&di=394fe41a01f45b7371b8a506aa7de9fa&imgtype=0&src=http%3A%2F%2Fww1.sinaimg.cn%2Flarge%2F9838a740gw1exmia2ksr9j21kw0zk12o.jpg";
+    [UserInfoDao saveUserInfo:turingUser];
+}
 - (void)configRootViewControllers{
     RootViewController *vc = [[RootViewController alloc]init];
 //    UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:vc];

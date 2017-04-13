@@ -8,7 +8,7 @@
 
 #import "RongCloud.h"
 
-@interface RongCloud ()<RCIMUserInfoDataSource>
+@interface RongCloud ()<RCIMUserInfoDataSource,RCIMReceiveMessageDelegate>
 
 @end
 
@@ -29,39 +29,52 @@
 - (void)initializationRC{
     [[RCIM sharedRCIM] initWithAppKey:@"vnroth0kvfpgo"];
     [[RCIM sharedRCIM] setUserInfoDataSource:self];
+    [[RCIM sharedRCIM] setReceiveMessageDelegate:self];
     [self getToken];
 }
-
+-(void)onRCIMReceiveMessage:(RCMessage *)message left:(int)left{
+    NSLog(@"%@",message.content);
+}
 - (void)getToken{
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
-    if ([token length] > 0) {
-        [self connectRCServer];
-    }else{
-        [HttpOperation asyncGetTokenCompleted:^(NSString *token, NSInteger code, NSString *msg) {
+//    if ([token length] > 0) {
+//        [self connectRCServer];
+//    }else{
+    UserInfoModel *currentUser = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",[self userId]]];
+    [HttpOperation asyncGetTokenWithUserInfo:currentUser completed:^(NSString *token, NSInteger code, NSString *msg) {
+        [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"token"];
+        [self connectRCServerWithToken:token];
+    }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        UserInfoModel *turingUser = [UserInfoDao getUserInfoWithUserId:@"1001"];
+        [HttpOperation asyncGetTokenWithUserInfo:turingUser completed:^(NSString *token, NSInteger code, NSString *msg) {
             [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"token"];
-            [self connectRCServer];
+            [self connectRCServerWithToken:token];
         }];
-    }
+        
+    });
+    
+//    }
 }
 
 - (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *userInfo))completion{
     
-    NSString *userName = @"桂纶镁";
-    NSString *imageUrl = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490622493408&di=82fabd2109363399317ea1265ecef71c&imgtype=0&src=http%3A%2F%2Fmxycsku.qiniucdn.com%2Fgroup5%2FM00%2FB2%2F34%2FwKgBf1VjAmqAIA3mAEqbpeBYMkU52.jpeg";
+    UserInfoModel *userInfo = [UserInfoDao getUserInfoWithUserId:userId];
     RCUserInfo *targetUser = [[RCUserInfo alloc]init];
-    targetUser.userId = userId;
-    targetUser.name = userName;
-    targetUser.portraitUri = imageUrl;
+    targetUser.userId = [NSString stringWithFormat:@"%ld",userInfo.userId];
+    targetUser.name = userInfo.nickName;
+    targetUser.portraitUri = userInfo.headerImageUrl;
     completion(targetUser);
 }
 
 
-+ (void)connectRCServer{
-    [[RongCloud shareInstance] connectRCServer];
++ (void)connectRCServerWithToken:(NSString *)token{
+    [[RongCloud shareInstance] connectRCServerWithToken:token];
 }
-- (void)connectRCServer{
+- (void)connectRCServerWithToken:(NSString *)token{
     
-    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
+//    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
     
     [[RCIM sharedRCIM] connectWithToken:token success:^(NSString *userId) {
         NSLog(@"登陆成功。当前登录的用户ID：%@", userId);

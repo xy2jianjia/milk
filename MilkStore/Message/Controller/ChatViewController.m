@@ -7,15 +7,20 @@
 //
 
 #import "ChatViewController.h"
-
+#import "TRRTuringAPIConfig.h"
+#import "TRRTuringRequestManager.h"
 @interface ChatViewController ()
-
+@property (nonatomic,strong) TRRTuringAPIConfig *config;
+@property (nonatomic,strong) TRRTuringRequestManager *apiRequest;
+@property (nonatomic,strong) UserInfoModel *userInfo;
+@property (nonatomic,strong) UserInfoModel *targetUserInfo;
 @end
 
 @implementation ChatViewController
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
+    
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -23,7 +28,54 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [[RCIM sharedRCIM] setReceiveMessageDelegate:self];
+    _userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];
+    _targetUserInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"1001"]];
+    _config = [[TRRTuringAPIConfig alloc]initWithAPIKey:@"5472bea635314686a897db4ff53adef8"];
+    _apiRequest = [[TRRTuringRequestManager alloc] initWithConfig:_config];
+    
+    
+}
+
+//-(void)didSendMessage:(NSInteger)status content:(RCMessageContent *)messageContent{
+//    //可以在这里修改将要发送的消息
+//    if ([messageContent isMemberOfClass:[RCTextMessage class]]) {
+//        RCTextMessage *msg = (RCTextMessage *)messageContent;
+//        NSString *text = msg.content;
+//        [self sendMessageWithMessage:text];
+//    }
+//}
+- (void)sendMessageWithMessage:(NSString *)message{
+//    dispatch_async(dispatch_get_main_queue(), ^{
+        [_config request_UserIDwithSuccessBlock:^(NSString *str) {
+            [_apiRequest request_OpenAPIWithInfo:message successBlock:^(NSDictionary *dict) {
+                NSLog(@"apiResult =%@",dict);
+                NSString *text = [dict objectForKey:@"text"];
+                RCTextMessage *content = [[RCTextMessage alloc]init];
+                content.content = text;
+                content.senderUserInfo = [[RCUserInfo alloc]initWithUserId:@"1001" name:_targetUserInfo.nickName portrait:_targetUserInfo.headerImageUrl];
+                [[RCIM sharedRCIM] sendMessage:ConversationType_PRIVATE targetId:[NSString stringWithFormat:@"%ld",_userInfo.userId] content:content pushContent:text pushData:text success:^(long messageId) {
+                    NSLog(@"发送成功。。");
+                } error:^(RCErrorCode nErrorCode, long messageId) {
+                    NSLog(@"发送失败。。");
+                }];
+            } failBlock:^(TRRAPIErrorType errorType, NSString *infoStr) {
+                NSLog(@"errorinfo = %@", infoStr);
+            }];
+        }failBlock:^(TRRAPIErrorType errorType, NSString *infoStr) {
+            NSLog(@"erroresult = %@", infoStr);
+        }];
+//    });
+    
+}
+- (RCMessageContent *)willSendMessage:(RCMessageContent *)messageContent {
+    //可以在这里修改将要发送的消息
+    if ([messageContent isMemberOfClass:[RCTextMessage class]]) {
+        RCTextMessage *msg = (RCTextMessage *)messageContent;
+        NSString *text = msg.content;
+        [self sendMessageWithMessage:text];
+    }
+    return messageContent;
 }
 
 - (void)didReceiveMemoryWarning {

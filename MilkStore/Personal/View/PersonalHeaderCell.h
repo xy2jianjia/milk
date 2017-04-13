@@ -10,5 +10,6 @@
 
 @interface PersonalHeaderCell : UITableViewCell
 @property (nonatomic,strong) UserInfoModel *userInfo;
+@property (nonatomic,assign) BOOL hideLabel;
 -(void)setUserInfo:(UserInfoModel *)userInfo;
 @end

@@ -49,7 +49,11 @@
     _priceLabel.text = @"¥ 59.90";
     [self.contentView addSubview:_priceLabel];
 }
-
+-(void)setModel:(GoodInfoModel *)model{
+    _titleLabel.text = model.name;
+    _activityLabel.text = model.charater;
+    _priceLabel.text = [NSString stringWithFormat:@"¥ %.2f",model.price];
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

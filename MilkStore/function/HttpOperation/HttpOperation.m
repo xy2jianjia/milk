@@ -24,10 +24,10 @@
     manger.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     return manger;
 }
-+ (void)asyncGetTokenCompleted:(void(^)(NSString *token ,NSInteger code,NSString *msg))completed{
-    [[HttpOperation shareInstance] asyncGetTokenCompleted:completed];
++ (void)asyncGetTokenWithUserInfo:(UserInfoModel *)userInfo completed:(void(^)(NSString *token ,NSInteger code,NSString *msg))completed{
+    [[HttpOperation shareInstance] asyncGetTokenWithUserInfo:userInfo completed:completed];
 }
-- (void)asyncGetTokenCompleted:(void(^)(NSString *token ,NSInteger code,NSString *msg))completed{
+- (void)asyncGetTokenWithUserInfo:(UserInfoModel *)userInfo completed:(void(^)(NSString *token ,NSInteger code,NSString *msg))completed{
     AFHTTPRequestOperationManager *manger = [self getManager];
     NSString *nonce = [NSString stringWithFormat:@"%ld",arc4random()%(1000000)];
     NSString * AppKey= @"vnroth0kvfpgo";
@@ -43,9 +43,9 @@
     [manger.requestSerializer setValue:timestamp forHTTPHeaderField:@"Timestamp"];
     [manger.requestSerializer setValue:signature forHTTPHeaderField:@"Signature"];
     
-    NSString *userId =@"1001";
-    NSString *userName = @"桂纶镁";
-    NSString *imageUrl = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490622493408&di=82fabd2109363399317ea1265ecef71c&imgtype=0&src=http%3A%2F%2Fmxycsku.qiniucdn.com%2Fgroup5%2FM00%2FB2%2F34%2FwKgBf1VjAmqAIA3mAEqbpeBYMkU52.jpeg";
+    NSString *userId =[NSString stringWithFormat:@"%ld",userInfo.userId];
+    NSString *userName = userInfo.nickName;
+    NSString *imageUrl = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490713789020&di=394fe41a01f45b7371b8a506aa7de9fa&imgtype=0&src=http%3A%2F%2Fww1.sinaimg.cn%2Flarge%2F9838a740gw1exmia2ksr9j21kw0zk12o.jpg";
     NSDictionary *temp = [NSDictionary dictionaryWithObjectsAndKeys:userId,@"userId",userName,@"name",imageUrl,@"portraitUri", nil];
     
     NSString *url = [NSString stringWithFormat:@"http://api.cn.ronghub.com/user/getToken.json"];

@@ -34,7 +34,8 @@ static NSString * const reuseIdentifier = @"Cell";
     scv.autoScrollTimeInterval = 5.0f;
     [self.view addSubview:scv];
     CGRect tempRect = self.collectionView.frame ;
-    tempRect.origin.y = CGRectGetMaxY(temp) - 64;
+    tempRect.origin.y = CGRectGetMaxY(temp) -64;
+    tempRect.size.height = SCREEN_HEIGHT  - 150 - 40;
     self.collectionView.frame = tempRect ;
 }
 - (void)viewDidLoad {
@@ -78,6 +79,8 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     DetailViewController *vc = [[DetailViewController alloc]initWithStyle:(UITableViewStyleGrouped)];
+    GoodInfoModel *item = [_dataSource objectAtIndex:indexPath.item];
+    vc.goodModel = item;
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{

@@ -45,6 +45,11 @@
     _countLabel.text = @" 1个";
     [self.contentView addSubview:_countLabel];
 }
+-(void)setModel:(GoodInfoModel *)model{
+    _titleLabel.text = model.name;
+    _countLabel.text = [NSString stringWithFormat:@"%ld 个",model.count];
+//    _priceLabel.text = [NSString stringWithFormat:@"¥ %.2f",model.price];
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

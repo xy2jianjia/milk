@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailNameCell : UITableViewCell
-
+@property (nonatomic,strong) GoodInfoModel *model;
 @end

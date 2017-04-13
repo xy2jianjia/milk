@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface HttpOperation : NSObject
-+ (void)asyncGetTokenCompleted:(void(^)(NSString *token ,NSInteger code,NSString *msg))completed;
++ (void)asyncGetTokenWithUserInfo:(UserInfoModel *)userInfo completed:(void(^)(NSString *token ,NSInteger code,NSString *msg))completed;
 @end

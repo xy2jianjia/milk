@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailViewController : UITableViewController
-
+@property (nonatomic,strong) GoodInfoModel *goodModel;
 @end

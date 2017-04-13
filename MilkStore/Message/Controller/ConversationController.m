@@ -18,8 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.conversationListTableView.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
-//    [self.conversationListTableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     self.conversationListTableView.tableFooterView = [UIView new];
+    
     self.title = @"消息";
     //设置需要显示哪些类型的会话
     [self setDisplayConversationTypes:@[@(ConversationType_PRIVATE),
@@ -37,7 +37,8 @@
     ChatViewController *conversationVC = [[ChatViewController alloc]init];
     conversationVC.conversationType = model.conversationType;
     conversationVC.targetId = model.targetId;
-    conversationVC.title = @"桂纶镁";
+    UserInfoModel *targetUser = [UserInfoDao getUserInfoWithUserId:model.targetId];
+    conversationVC.title = targetUser.nickName;
     [self.navigationController pushViewController:conversationVC animated:YES];
 }
 - (void)didReceiveMemoryWarning {

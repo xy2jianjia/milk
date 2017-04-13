@@ -12,8 +12,10 @@
 #import "DetailChooseCell.h"
 #import "DetailAddressCell.h"
 #import "BottomView.h"
+#import "ChatViewController.h"
 @interface DetailViewController ()
 @property (nonatomic,strong) NSMutableArray *imageArr;
+
 @end
 
 @implementation DetailViewController
@@ -45,9 +47,26 @@
 }
 - (void)configBottomView{
     [BottomView configBottomViewWithCollectionBlock:^(BOOL flag) {
-        
+        ChatViewController *conversationVC = [[ChatViewController alloc]init];
+        conversationVC.conversationType = ConversationType_PRIVATE;
+        conversationVC.targetId = @"1001";
+        conversationVC.title = @"图灵客服";
+        [self.navigationController pushViewController:conversationVC animated:YES];
     } cartBlock:^(BOOL flag) {
+        UserInfoModel *userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];
+        CartModel *item = [[CartModel alloc]init];
+        item.cartId = [self uuid];
+        item.goodCharater = _goodModel.charater;
+        item.goodsName = _goodModel.name;
+        item.goodsId = _goodModel.id;
+        item.goodImageUrl = _goodModel.image;
+        item.price = _goodModel.price;
+        item.count = 1;
+        item.userId = userInfo.userId;
+        item.udid = self.imei;
         
+        [CartDao saveCartInfo:item userId:userInfo.userId];
+        [self showHint:@"已添加到购物车"];
     } buyBlock:^(BOOL flag) {
         
     }];
@@ -88,9 +107,11 @@
         return cell;
     }else if(indexPath.row == 1){
         DetailNameCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell2" forIndexPath:indexPath];
+        cell.model = _goodModel;
         return cell;
     }else if(indexPath.row == 2){
         DetailChooseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell3" forIndexPath:indexPath];
+        cell.model = _goodModel;
         return cell;
     }else{
         DetailAddressCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell4" forIndexPath:indexPath];

@@ -9,6 +9,8 @@
 
 #ifndef Header_h
 #define Header_h
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>      //这个是你预编译的文件举例。
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
@@ -30,8 +32,27 @@
 #import "HttpOperation.h"
 #import "RongCloud.h"
 #import "JSONKit.h"
+#import "LoginViewController.h"
+#import "NSObject+Regular.h"
+#import "UserInfoDao.h"
+#import "JNKeychain.h"
+#import "CartModel.h"
+#import "DBHelper.h"
+#import "CartDao.h"
+#import "UIViewController+HUD.h"
+#import "TotalView.h"
+#import "OrderModel.h"
+#import "OrderDao.h"
 #define screenSize [UIScreen mainScreen].bounds.size
 #define SCREEN_WIDTH  screenSize.width
 #define SCREEN_HEIGHT  screenSize.height
 
+#define kUIColorFromRGB(rgbValue) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+
+static NSString * const BUNDLEID_FOR_KEY = @"com.kuyuechuang.qiuyang";
+#endif
 #endif /* Header_h */
