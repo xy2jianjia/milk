@@ -36,11 +36,13 @@
         _saveBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         _saveBtn.frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds) , CGRectGetHeight(self.bounds) );
         [_saveBtn setTitle:@"去付款" forState:(UIControlStateNormal)];
-        _saveBtn.titleLabel.font = [UIFont systemFontOfSize:11];
-        [_saveBtn setTitleColor:kUIColorFromRGB(0x000000) forState:(UIControlStateNormal)];
+        _saveBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_saveBtn setBackgroundColor:[UIColor redColor]];
+        [_saveBtn setTitleColor:kUIColorFromRGB(0xffffff) forState:(UIControlStateNormal)];
         [_saveBtn addTarget:self action:@selector(collectionBtnAction) forControlEvents:(UIControlEventTouchUpInside)];
         [self addSubview:_saveBtn];
-
+        UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+        [keyWindow addSubview:self];
     
     });
     

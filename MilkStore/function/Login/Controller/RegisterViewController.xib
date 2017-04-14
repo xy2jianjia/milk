@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController">
             <connections>
+                <outlet property="loginBtn" destination="XUC-tX-JLL" id="rGb-ca-shw"/>
                 <outlet property="passwordTextField" destination="vNN-C3-QI7" id="9zH-Gk-SxP"/>
                 <outlet property="registerBtn" destination="ZcS-Uk-QYe" id="QOh-nj-gYy"/>
                 <outlet property="userNameTextField" destination="sH1-zw-fnC" id="Pe9-bI-oZ2"/>
@@ -23,10 +24,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZcS-Uk-QYe">
-                    <rect key="frame" x="37" y="202" width="300" height="30"/>
+                    <rect key="frame" x="37" y="202" width="113" height="30"/>
                     <color key="backgroundColor" red="1" green="0.23021544890000001" blue="0.42003212509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="6lY-KY-TGt"/>
+                        <constraint firstAttribute="width" constant="113" id="9sl-R1-cjC"/>
+                        <constraint firstAttribute="height" constant="30" id="U4D-c5-org"/>
                     </constraints>
                     <state key="normal" title="注册">
                         <color key="titleColor" red="0.97804109380000004" green="0.97670762519999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -80,17 +82,32 @@
                         <constraint firstAttribute="height" constant="0.5" id="Bo1-wF-TcE"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUC-tX-JLL">
+                    <rect key="frame" x="224.5" y="202" width="113" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.23021544890000001" blue="0.42003212509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="已有账号">
+                        <color key="titleColor" red="0.97804109380000004" green="0.97670762519999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="loginAction:" destination="-1" eventType="touchUpInside" id="C9J-ux-Krz"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vNN-C3-QI7" firstAttribute="centerY" secondItem="gv1-dO-ngm" secondAttribute="centerY" id="0tt-0K-ZPz"/>
                 <constraint firstItem="gv1-dO-ngm" firstAttribute="width" secondItem="75p-23-egE" secondAttribute="width" id="1Ub-ll-21c"/>
                 <constraint firstItem="sH1-zw-fnC" firstAttribute="leading" secondItem="75p-23-egE" secondAttribute="trailing" constant="10" id="3bA-Lk-xm9"/>
+                <constraint firstItem="XUC-tX-JLL" firstAttribute="width" secondItem="ZcS-Uk-QYe" secondAttribute="width" id="7sD-hP-8up"/>
                 <constraint firstItem="75p-23-egE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="ACC-Qn-EQJ"/>
                 <constraint firstItem="gv1-dO-ngm" firstAttribute="leading" secondItem="75p-23-egE" secondAttribute="leading" id="CO1-3r-cPl"/>
                 <constraint firstItem="gv1-dO-ngm" firstAttribute="height" secondItem="75p-23-egE" secondAttribute="height" id="DPk-ZG-y7F"/>
                 <constraint firstItem="vNN-C3-QI7" firstAttribute="width" secondItem="sH1-zw-fnC" secondAttribute="width" id="F4X-Th-5iK"/>
                 <constraint firstItem="Rdi-6q-8NN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="37" id="FJe-Bc-MKE"/>
+                <constraint firstAttribute="trailing" secondItem="XUC-tX-JLL" secondAttribute="trailing" constant="37" id="FXz-OF-BCU"/>
+                <constraint firstItem="XUC-tX-JLL" firstAttribute="top" secondItem="ZcS-Uk-QYe" secondAttribute="top" id="FYD-FF-1d6"/>
+                <constraint firstItem="XUC-tX-JLL" firstAttribute="height" secondItem="ZcS-Uk-QYe" secondAttribute="height" id="KVu-C8-wyK"/>
                 <constraint firstItem="vNN-C3-QI7" firstAttribute="height" secondItem="sH1-zw-fnC" secondAttribute="height" id="PUG-mS-9KH"/>
                 <constraint firstItem="Rdi-6q-8NN" firstAttribute="top" secondItem="vNN-C3-QI7" secondAttribute="bottom" constant="1" id="SJ4-6R-8za"/>
                 <constraint firstItem="sH1-zw-fnC" firstAttribute="centerY" secondItem="75p-23-egE" secondAttribute="centerY" id="V7H-e7-7Ax"/>
@@ -99,14 +116,13 @@
                 <constraint firstItem="75p-23-egE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="37" id="Yuf-3d-e4Q"/>
                 <constraint firstItem="g5h-gn-AMi" firstAttribute="top" secondItem="sH1-zw-fnC" secondAttribute="bottom" constant="1" id="arD-1V-ct8"/>
                 <constraint firstItem="vNN-C3-QI7" firstAttribute="leading" secondItem="sH1-zw-fnC" secondAttribute="leading" id="eWy-iR-kWB"/>
-                <constraint firstItem="ZcS-Uk-QYe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="37" id="fRG-KP-b6c"/>
-                <constraint firstItem="ZcS-Uk-QYe" firstAttribute="top" secondItem="Rdi-6q-8NN" secondAttribute="bottom" constant="40.5" id="k1B-4d-lJ7"/>
                 <constraint firstAttribute="trailing" secondItem="sH1-zw-fnC" secondAttribute="trailing" constant="48" id="n5f-B8-XOm"/>
                 <constraint firstAttribute="trailing" secondItem="Rdi-6q-8NN" secondAttribute="trailing" constant="48" id="oiI-GB-YES"/>
-                <constraint firstAttribute="trailing" secondItem="ZcS-Uk-QYe" secondAttribute="trailing" constant="38" id="xtG-I5-8GB"/>
+                <constraint firstItem="ZcS-Uk-QYe" firstAttribute="top" secondItem="Rdi-6q-8NN" secondAttribute="bottom" constant="40.5" id="uei-Wa-FAo"/>
+                <constraint firstItem="ZcS-Uk-QYe" firstAttribute="leading" secondItem="Rdi-6q-8NN" secondAttribute="leading" id="xdy-f2-TgF"/>
                 <constraint firstAttribute="trailing" secondItem="g5h-gn-AMi" secondAttribute="trailing" constant="48" id="z2X-2G-MgL"/>
             </constraints>
-            <point key="canvasLocation" x="-278" y="-43"/>
+            <point key="canvasLocation" x="-278.5" y="-43.5"/>
         </view>
     </objects>
 </document>

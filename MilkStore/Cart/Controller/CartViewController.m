@@ -93,10 +93,11 @@
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
- 
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DetailViewController *vc = [[DetailViewController alloc]initWithStyle:(UITableViewStyleGrouped)];
-    GoodInfoModel *item = [_dataSource objectAtIndex:indexPath.item];
-    vc.goodModel = item;
+    CartModel *cartModel = [_dataSource objectAtIndex:indexPath.item];
+    GoodInfoModel *goodInfoModel = [DataSource getGoodInfoWithGoodId:cartModel.goodsId];
+    vc.goodModel = goodInfoModel;
     [self.navigationController pushViewController:vc animated:YES];
     
 }

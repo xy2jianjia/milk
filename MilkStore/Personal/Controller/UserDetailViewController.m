@@ -72,11 +72,11 @@
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
         [self setHeaderImage];
     }else{
         NickNameViewController *vc = [[NickNameViewController alloc]init];
-        
         [self.navigationController pushViewController:vc animated:YES];
         self.navigationController.hidesBottomBarWhenPushed = YES;
     }

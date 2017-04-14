@@ -46,14 +46,14 @@
         [self connectRCServerWithToken:token];
     }];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        UserInfoModel *turingUser = [UserInfoDao getUserInfoWithUserId:@"1001"];
-        [HttpOperation asyncGetTokenWithUserInfo:turingUser completed:^(NSString *token, NSInteger code, NSString *msg) {
-            [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"token"];
-            [self connectRCServerWithToken:token];
-        }];
-        
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        UserInfoModel *turingUser = [UserInfoDao getUserInfoWithUserId:@"1001"];
+//        [HttpOperation asyncGetTokenWithUserInfo:turingUser completed:^(NSString *token, NSInteger code, NSString *msg) {
+//            [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"token"];
+//            [self connectRCServerWithToken:token];
+//        }];
+//        
+//    });
     
 //    }
 }

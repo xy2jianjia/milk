@@ -13,10 +13,17 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *registerBtn;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+
+@property (nonatomic,strong) UserInfoModel *userInfo;
 @end
 
 @implementation LoginViewController
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    _userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];
+    _userNameTextField.text = _userInfo.userName;
+    _passwordTextField.text = _userInfo.password;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"登录";
@@ -24,7 +31,12 @@
     self.loginBtn.layer.cornerRadius = 5;
     self.registerBtn.layer.masksToBounds = YES;
     self.registerBtn.layer.cornerRadius = 5;
+     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"w_back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(backAction)];
     
+}
+- (void)backAction{
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
 }
 - (IBAction)loginAction:(id)sender {
     
@@ -58,7 +70,6 @@
     
 }
 - (IBAction)registerAction:(id)sender {
-//    [self dismissViewControllerAnimated:NO completion:nil];
     
     RegisterViewController *vc = [[RegisterViewController alloc]init];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];

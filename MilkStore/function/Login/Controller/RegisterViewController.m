@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *registerBtn;
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 
 @end
 
@@ -19,7 +20,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"w_back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(backAction)];
+}
+- (void)backAction{
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
+}
+- (IBAction)loginAction:(id)sender {
+    LoginViewController *vc = [[LoginViewController alloc]init];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:^{
+        
+    }];
 }
 - (IBAction)registerAction:(id)sender {
     NSString *userName = self.userNameTextField.text;
@@ -38,12 +50,11 @@
     userInfo.userId = [self longDateFromString:[self stringFromDate:[NSDate date]]];
     userInfo.userName = userName;
     userInfo.password = password;
-    userInfo.headerImageUrl = nil;
+    userInfo.headerImageUrl = @"";
+    userInfo.nickName = @"";
     [UserInfoDao saveUserInfo:userInfo];
     [self saveUserId:userInfo.userId];
-//    [self dismissViewControllerAnimated:YES completion:^{
-//
-//    }];
+    
     LoginViewController *vc = [[LoginViewController alloc]init];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
     [self presentViewController:nav animated:YES completion:^{

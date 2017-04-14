@@ -10,4 +10,6 @@
 
 @interface OrderInfoReceiverCell : UITableViewCell
 
+- (void)setNickName:(NSString *)nickName address:(NSString *)address phone:(NSString *)phone;
+
 @end

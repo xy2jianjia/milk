@@ -244,6 +244,14 @@
 		29980E551E9F252A006B7035 /* OrderInfoAmountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 29980E531E9F252A006B7035 /* OrderInfoAmountCell.m */; };
 		29980E561E9F252A006B7035 /* OrderInfoAmountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29980E541E9F252A006B7035 /* OrderInfoAmountCell.xib */; };
 		29980E591E9F7339006B7035 /* SaveOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29980E581E9F7339006B7035 /* SaveOrderView.m */; };
+		29980E5C1EA07363006B7035 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29980E5B1EA07363006B7035 /* PayViewController.m */; };
+		29980E601EA07CAF006B7035 /* PayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 29980E5E1EA07CAF006B7035 /* PayCell.m */; };
+		29980E611EA07CAF006B7035 /* PayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29980E5F1EA07CAF006B7035 /* PayCell.xib */; };
+		29980E631EA08486006B7035 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 29980E621EA08486006B7035 /* loading.gif */; };
+		29980E661EA09876006B7035 /* OrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29980E651EA09876006B7035 /* OrderListViewController.m */; };
+		29980E6F1EA09F3F006B7035 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 29980E6E1EA09F3F006B7035 /* DataSource.m */; };
+		29980E731EA0B0DB006B7035 /* OrderListAmountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 29980E711EA0B0DB006B7035 /* OrderListAmountCell.m */; };
+		29980E741EA0B0DB006B7035 /* OrderListAmountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29980E721EA0B0DB006B7035 /* OrderListAmountCell.xib */; };
 		29B45E121E9CA6F80014CD02 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B45E0D1E9CA6F80014CD02 /* MBProgressHUD.m */; };
 		29B45E131E9CA6F80014CD02 /* UIImageView+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B45E0F1E9CA6F80014CD02 /* UIImageView+Tool.m */; };
 		29B45E141E9CA6F80014CD02 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B45E111E9CA6F80014CD02 /* UIViewController+HUD.m */; };
@@ -634,6 +642,19 @@
 		29980E541E9F252A006B7035 /* OrderInfoAmountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderInfoAmountCell.xib; sourceTree = "<group>"; };
 		29980E571E9F7339006B7035 /* SaveOrderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveOrderView.h; sourceTree = "<group>"; };
 		29980E581E9F7339006B7035 /* SaveOrderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveOrderView.m; sourceTree = "<group>"; };
+		29980E5A1EA07363006B7035 /* PayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayViewController.h; sourceTree = "<group>"; };
+		29980E5B1EA07363006B7035 /* PayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayViewController.m; sourceTree = "<group>"; };
+		29980E5D1EA07CAF006B7035 /* PayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayCell.h; sourceTree = "<group>"; };
+		29980E5E1EA07CAF006B7035 /* PayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayCell.m; sourceTree = "<group>"; };
+		29980E5F1EA07CAF006B7035 /* PayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayCell.xib; sourceTree = "<group>"; };
+		29980E621EA08486006B7035 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
+		29980E641EA09876006B7035 /* OrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListViewController.h; sourceTree = "<group>"; };
+		29980E651EA09876006B7035 /* OrderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListViewController.m; sourceTree = "<group>"; };
+		29980E6D1EA09F3F006B7035 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
+		29980E6E1EA09F3F006B7035 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
+		29980E701EA0B0DB006B7035 /* OrderListAmountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListAmountCell.h; sourceTree = "<group>"; };
+		29980E711EA0B0DB006B7035 /* OrderListAmountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListAmountCell.m; sourceTree = "<group>"; };
+		29980E721EA0B0DB006B7035 /* OrderListAmountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListAmountCell.xib; sourceTree = "<group>"; };
 		29B45E0C1E9CA6F80014CD02 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		29B45E0D1E9CA6F80014CD02 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		29B45E0E1E9CA6F80014CD02 /* UIImageView+Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Tool.h"; sourceTree = "<group>"; };
@@ -1467,6 +1488,7 @@
 		296149B51E66ACCA0080E1D1 /* function */ = {
 			isa = PBXGroup;
 			children = (
+				29980E6C1EA09F2F006B7035 /* DataSource */,
 				29980E301E9F0E79006B7035 /* Order */,
 				295D37BA1E9B33F3007F4551 /* KeyChain */,
 				295D37B61E9B24C7007F4551 /* Regular */,
@@ -1513,6 +1535,10 @@
 			children = (
 				29980E401E9F1E7D006B7035 /* OrderInfoViewController.h */,
 				29980E411E9F1E7D006B7035 /* OrderInfoViewController.m */,
+				29980E5A1EA07363006B7035 /* PayViewController.h */,
+				29980E5B1EA07363006B7035 /* PayViewController.m */,
+				29980E641EA09876006B7035 /* OrderListViewController.h */,
+				29980E651EA09876006B7035 /* OrderListViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1545,8 +1571,23 @@
 				29980E541E9F252A006B7035 /* OrderInfoAmountCell.xib */,
 				29980E571E9F7339006B7035 /* SaveOrderView.h */,
 				29980E581E9F7339006B7035 /* SaveOrderView.m */,
+				29980E5D1EA07CAF006B7035 /* PayCell.h */,
+				29980E5E1EA07CAF006B7035 /* PayCell.m */,
+				29980E5F1EA07CAF006B7035 /* PayCell.xib */,
+				29980E701EA0B0DB006B7035 /* OrderListAmountCell.h */,
+				29980E711EA0B0DB006B7035 /* OrderListAmountCell.m */,
+				29980E721EA0B0DB006B7035 /* OrderListAmountCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		29980E6C1EA09F2F006B7035 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				29980E6D1EA09F3F006B7035 /* DataSource.h */,
+				29980E6E1EA09F3F006B7035 /* DataSource.m */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		29B45E0B1E9CA6F80014CD02 /* HUD */ = {
@@ -1624,6 +1665,7 @@
 				294822551E8A45A4004470FA /* 详情轮播图 */,
 				2948223D1E8A39A5004470FA /* 轮播图 */,
 				29C985391E63DA6D004251AF /* Assets.xcassets */,
+				29980E621EA08486006B7035 /* loading.gif */,
 				29156E231E892769006B278D /* DataSource.plist */,
 				29156E251E8934EC006B278D /* CategoryName.plist */,
 			);
@@ -1914,6 +1956,7 @@
 				294822441E8A39A5004470FA /* 3.jpg in Resources */,
 				295D38BD1E9B93C8007F4551 /* 2004.jpg in Resources */,
 				294822751E8A6256004470FA /* RongCloudKit.strings in Resources */,
+				29980E611EA07CAF006B7035 /* PayCell.xib in Resources */,
 				295D389D1E9B93C7007F4551 /* 3009.jpg in Resources */,
 				29156E241E892769006B278D /* DataSource.plist in Resources */,
 				295D38AC1E9B93C8007F4551 /* 1008.jpg in Resources */,
@@ -1938,6 +1981,7 @@
 				295D38B01E9B93C8007F4551 /* 1012.jpg in Resources */,
 				295D38961E9B93C7007F4551 /* 3002.jpg in Resources */,
 				29156E5E1E893E8F006B278D /* README.txt in Resources */,
+				29980E741EA0B0DB006B7035 /* OrderListAmountCell.xib in Resources */,
 				295D38C01E9B93C8007F4551 /* 2007.jpg in Resources */,
 				29156E5D1E893E8F006B278D /* read_me.txt in Resources */,
 				295D38BA1E9B93C8007F4551 /* 2001.jpg in Resources */,
@@ -1947,6 +1991,7 @@
 				29156E631E893E8F006B278D /* UMSocialSDKResources.bundle in Resources */,
 				295D38C71E9B93C8007F4551 /* 4007.jpg in Resources */,
 				295D38AD1E9B93C8007F4551 /* 1009.jpg in Resources */,
+				29980E631EA08486006B7035 /* loading.gif in Resources */,
 				295D38C91E9B93C8007F4551 /* 4009.jpg in Resources */,
 				29980E511E9F2417006B7035 /* OderInfoInvoiceCell.xib in Resources */,
 			);
@@ -2008,6 +2053,7 @@
 				29156E771E894DF7006B278D /* PersonalHeaderCell.m in Sources */,
 				294822C81E8A679E004470FA /* AFHTTPRequestOperationManager.m in Sources */,
 				296149281E669C7B0080E1D1 /* HomeViewCell.m in Sources */,
+				29980E661EA09876006B7035 /* OrderListViewController.m in Sources */,
 				2961499F1E66AC240080E1D1 /* MJRefreshConst.m in Sources */,
 				295D37CC1E9B7DF3007F4551 /* CartModel.m in Sources */,
 				29B45E131E9CA6F80014CD02 /* UIImageView+Tool.m in Sources */,
@@ -2038,6 +2084,7 @@
 				295D38F31E9BAAA0007F4551 /* TTTAttributedLabel.m in Sources */,
 				294822D61E8A679E004470FA /* UIRefreshControl+AFNetworking.m in Sources */,
 				294822D71E8A679E004470FA /* UIWebView+AFNetworking.m in Sources */,
+				29980E6F1EA09F3F006B7035 /* DataSource.m in Sources */,
 				296149931E66AC240080E1D1 /* MJRefreshFooter.m in Sources */,
 				296149A91E66AC240080E1D1 /* SDWebImageDownloaderOperation.m in Sources */,
 				2961498B1E66AC240080E1D1 /* FMDatabase.m in Sources */,
@@ -2051,6 +2098,7 @@
 				29980E461E9F1F39006B7035 /* OrderInfoReceiverCell.m in Sources */,
 				29980E421E9F1E7D006B7035 /* OrderInfoViewController.m in Sources */,
 				296149A41E66AC240080E1D1 /* NSData+ImageContentType.m in Sources */,
+				29980E601EA07CAF006B7035 /* PayCell.m in Sources */,
 				296149991E66AC240080E1D1 /* MJRefreshBackNormalFooter.m in Sources */,
 				2948223C1E8A382C004470FA /* UIView+SDExtension.m in Sources */,
 				296149921E66AC240080E1D1 /* MJRefreshComponent.m in Sources */,
@@ -2064,10 +2112,12 @@
 				295D37AC1E9B1CBD007F4551 /* DBManager.m in Sources */,
 				294822681E8A505C004470FA /* DetailAddressCell.m in Sources */,
 				294822381E8A382C004470FA /* TADotView.m in Sources */,
+				29980E731EA0B0DB006B7035 /* OrderListAmountCell.m in Sources */,
 				296149A01E66AC240080E1D1 /* UIScrollView+MJExtension.m in Sources */,
 				296149B21E66AC240080E1D1 /* UIView+WebCacheOperation.m in Sources */,
 				296149A31E66AC240080E1D1 /* MKAnnotationView+WebCache.m in Sources */,
 				294822541E8A40F3004470FA /* DetailImageGroupCell.m in Sources */,
+				29980E5C1EA07363006B7035 /* PayViewController.m in Sources */,
 				295D38EF1E9BAAA0007F4551 /* CADebugMacros.cpp in Sources */,
 				296149A21E66AC240080E1D1 /* UIView+MJExtension.m in Sources */,
 				29980E501E9F2417006B7035 /* OderInfoInvoiceCell.m in Sources */,

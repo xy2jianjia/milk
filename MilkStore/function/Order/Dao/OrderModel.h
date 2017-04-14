@@ -18,7 +18,7 @@
 /**
  商品信息
  */
-@property (nonatomic,strong) NSString *goodIds;
+@property (nonatomic,strong) NSString *cartIds;
 
 /**
  收货人姓名

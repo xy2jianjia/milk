@@ -13,9 +13,12 @@
 #import "OderInfoInvoiceCell.h"
 #import "OrderInfoAmountCell.h"
 #import "SaveOrderView.h"
+#import "NickNameViewController.h"
+#import "PayViewController.h"
 @interface OrderInfoViewController ()
 @property (nonatomic,assign) float amount;
 @property (nonatomic,strong) SaveOrderView *saveOrderView;
+@property (nonatomic,strong) UserInfoModel *userInfo ;
 @end
 
 @implementation OrderInfoViewController
@@ -23,6 +26,9 @@
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
     _saveOrderView.hidden = NO;
+    _userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];
+    NSIndexSet *index = [NSIndexSet indexSetWithIndex:0];
+    [self.tableView reloadSections:index withRowAnimation:UITableViewRowAnimationFade];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -33,36 +39,45 @@
     self.navigationItem.title = @"订单详情";
     [self.tableView registerClass:[CartViewCell class] forCellReuseIdentifier:@"cartcell"];
     
-    UserInfoModel *userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];
-    
     _amount = 0.0;
     for (CartModel *cartModel in _cartArr) {
         _amount += cartModel.price*cartModel.count;
     }
     _saveOrderView = [SaveOrderView configBottomViewSaveOrderBlock:^{
+        if (!_userInfo) {
+            [self showHint:@"请先登录"];
+            RegisterViewController *vc = [[RegisterViewController alloc]init];
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+            [self presentViewController:nav animated:YES completion:nil];
+            return ;
+        }
         NSMutableString *str = [NSMutableString string];
         for (NSInteger i = 0; i < _cartArr.count; i ++) {
             CartModel *cartModel = [_cartArr objectAtIndex:i];
             if (i == _cartArr.count - 1) {
-                [str appendFormat:@"%ld",cartModel.goodsId];
+                [str appendFormat:@"%@",cartModel.cartId];
             }else{
-                [str appendFormat:@"%ld,",cartModel.goodsId];
+                [str appendFormat:@"%@,",cartModel.cartId];
             }
         }
         OrderModel *orderModel = [[OrderModel alloc]init];
         orderModel.orderId = [self uuid];
-        orderModel.receiverName = [userInfo.nickName length] == 0 ?userInfo.userName:userInfo.nickName;
-        orderModel.receiverTel = userInfo.userName;
+        orderModel.receiverName = [_userInfo.nickName length] == 0 ?_userInfo.userName:_userInfo.nickName;
+        orderModel.receiverTel = _userInfo.userName;
         orderModel.address = @"广西南宁市大学东路188号广西民族大学";
         orderModel.payType = 1;// 1、在线支付
         orderModel.invoice = @"不开发票";
         orderModel.totalAmount = _amount;
         orderModel.freight = 0;
-        orderModel.goodIds = str;
+        orderModel.cartIds = str;
         orderModel.time = [self stringFromDate:[NSDate date]];
         orderModel.status = 0;
         [OrderDao saveOrderInfo:orderModel];
+        PayViewController *vc = [[PayViewController alloc]initWithStyle:UITableViewStyleGrouped];
+        vc.orderModel = orderModel;
+        [self.navigationController pushViewController:vc animated:YES];
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -89,6 +104,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         OrderInfoReceiverCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"OrderInfoReceiverCell" owner:self options:nil] lastObject];
+        NSString *nickName = _userInfo.nickName;
+        [cell setNickName:nickName address:@"广西南宁市大学东路188号广西民族大学" phone:_userInfo.userName];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     }else if(indexPath.section == 1){
@@ -117,6 +134,23 @@
         }
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
+    }
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 0) {
+        if (!_userInfo) {
+            [self showHint:@"请先登录"];
+            RegisterViewController *vc = [[RegisterViewController alloc]init];
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+            [self presentViewController:nav animated:YES completion:nil];
+            return ;
+        }
+        NSString *nickName = _userInfo.nickName;
+        if ([nickName length] == 0 || nickName == nil || [nickName isEqualToString:@"(null)"] || [nickName isEqualToString:@"null"]) {
+            NickNameViewController *vc = [[NickNameViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

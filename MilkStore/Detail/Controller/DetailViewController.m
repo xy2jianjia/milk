@@ -49,8 +49,8 @@
     [BottomView configBottomViewWithCollectionBlock:^(BOOL flag) {
         ChatViewController *conversationVC = [[ChatViewController alloc]init];
         conversationVC.conversationType = ConversationType_PRIVATE;
-        conversationVC.targetId = @"1001";
-        conversationVC.title = @"图灵客服";
+        conversationVC.targetId = @"18172363603";
+        conversationVC.title = @"酷乐创客服";
         [self.navigationController pushViewController:conversationVC animated:YES];
     } cartBlock:^(BOOL flag) {
         UserInfoModel *userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];

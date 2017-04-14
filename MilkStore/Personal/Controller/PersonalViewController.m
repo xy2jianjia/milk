@@ -10,6 +10,7 @@
 #import "PersonalHeaderCell.h"
 #import "PersonalCell.h"
 #import "UserDetailViewController.h"
+#import "OrderListViewController.h"
 @interface PersonalViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIActionSheetDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) UserInfoModel *userInfo;
@@ -79,7 +80,7 @@
             text = @"设置";
         }else{
             image = [UIImage imageNamed:@"MoreWeApp_25x25_"];
-            text = @"表情";
+            text = @"我的订单";
         }
         [cell setImage:image text:text];
         cell.textLabel.font = [UIFont systemFontOfSize:12];
@@ -88,19 +89,31 @@
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
         UserInfoModel *userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];
         if (!userInfo) {
-            LoginViewController *vc = [[LoginViewController alloc]init];
+            RegisterViewController *vc = [[RegisterViewController alloc]init];
             UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
             [self presentViewController:nav animated:YES completion:^{
                 
             }];
-        }else{
-            UserDetailViewController *vc = [[UserDetailViewController alloc]initWithStyle:(UITableViewStyleGrouped)];
-//            self.navigationController.hidesBottomBarWhenPushed = YES;
+        }else {
+//            if (indexPath.row == 5) {
+//                OrderListViewController *vc = [[OrderListViewController alloc]initWithStyle:(UITableViewStyleGrouped)];
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }else{
+                UserDetailViewController *vc = [[UserDetailViewController alloc]initWithStyle:(UITableViewStyleGrouped)];
+                [self.navigationController pushViewController:vc animated:YES];
+                self.navigationController.hidesBottomBarWhenPushed = YES;
+//            }
+        }
+    }else{
+        if (indexPath.row == 5) {
+            OrderListViewController *vc = [[OrderListViewController alloc]initWithStyle:(UITableViewStyleGrouped)];
             [self.navigationController pushViewController:vc animated:YES];
-            self.navigationController.hidesBottomBarWhenPushed = YES;
+        }else{
+            [self showHint:@"敬请期待"];
         }
     }
 }

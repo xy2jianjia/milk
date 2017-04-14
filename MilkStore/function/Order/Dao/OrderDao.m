@@ -22,7 +22,7 @@ static NSString * const ORDERTABLE = @"ORDERTABLE";
 }
 
 - (void)createTable{
-    NSString *createTableSQL = @"CREATE TABLE ORDERTABLE (orderId text,receiverName text,receiverTel text,address text,payType integer,invoice float,totalAmount float,freight text,goodIds text,time text,status integer)";
+    NSString *createTableSQL = @"CREATE TABLE ORDERTABLE (orderId text,receiverName text,receiverTel text,address text,payType integer,invoice float,totalAmount float,freight text,cartIds text,time text,status integer)";
     
     [OrderDao createUserTableWithSQL:createTableSQL tableName:ORDERTABLE];
 }
@@ -53,7 +53,7 @@ static NSString * const ORDERTABLE = @"ORDERTABLE";
 }
 - (void) saveCartInfo:(OrderModel *)item {
 //    orderId ,receiverName ,receiverTel ,address ,payType ,invoice ,totalAmount ,freight ,goodId
-    NSString * insertSql = [NSString stringWithFormat:@"INSERT INTO ORDERTABLE VALUES  ('%@','%@','%@','%@','%ld','%@','%.2f','%.2f','%@','%@','%ld')",item.orderId,item.receiverName,item.receiverTel,item.address,item.payType,item.invoice,item.totalAmount,item.freight,item.goodIds,item.time,item.status];
+    NSString * insertSql = [NSString stringWithFormat:@"INSERT INTO ORDERTABLE VALUES  ('%@','%@','%@','%@','%ld','%@','%.2f','%.2f','%@','%@','%ld')",item.orderId,item.receiverName,item.receiverTel,item.address,item.payType,item.invoice,item.totalAmount,item.freight,item.cartIds,item.time,item.status];
     FMDatabaseQueue *queue = [DBHelper getDatabaseQueue];
     [queue inDatabase:^(FMDatabase *db) {
         BOOL flag = [db executeUpdate:insertSql];
@@ -84,7 +84,7 @@ static NSString * const ORDERTABLE = @"ORDERTABLE";
             item.invoice = [result stringForColumn:@"invoice"];
             item.totalAmount = [result doubleForColumn:@"totalAmount"];
             item.freight = [result doubleForColumn:@"freight"];
-            item.goodIds = [result stringForColumn:@"goodIds"];
+            item.cartIds = [result stringForColumn:@"cartIds"];
             item.time = [result stringForColumn:@"time"];
             item.status = [result intForColumn:@"status"];
             [temp addObject:item];
@@ -112,7 +112,7 @@ static NSString * const ORDERTABLE = @"ORDERTABLE";
             item.invoice = [result stringForColumn:@"invoice"];
             item.totalAmount = [result doubleForColumn:@"totalAmount"];
             item.freight = [result doubleForColumn:@"freight"];
-            item.goodIds = [result stringForColumn:@"goodIds"];
+            item.cartIds = [result stringForColumn:@"cartIds"];
             item.time = [result stringForColumn:@"time"];
             item.status = [result intForColumn:@"status"];
         }
@@ -125,7 +125,7 @@ static NSString * const ORDERTABLE = @"ORDERTABLE";
 }
 - (void)updateCartInfo:(OrderModel *)item{
 //    orderId ,receiverName ,receiverTel ,address ,payType ,invoice ,totalAmount ,freight ,goodId
-    NSString * sql = [NSString stringWithFormat:@"UPDATE ORDERTABLE SET receiverName = '%@',receiverTel = '%@',address = '%@',payType = '%ld',invoice = '%@',totalAmount = '%.2f',freight = '%.2f',goodIds = '%@',status = '%ld' WHERE orderId = '%@'",item.receiverName,item.receiverTel,item.address,item.payType,item.invoice,item.totalAmount,item.freight,item.goodIds,item.status,item.orderId];
+    NSString * sql = [NSString stringWithFormat:@"UPDATE ORDERTABLE SET receiverName = '%@',receiverTel = '%@',address = '%@',payType = '%ld',invoice = '%@',totalAmount = '%.2f',freight = '%.2f',cartIds = '%@',status = '%ld' WHERE orderId = '%@'",item.receiverName,item.receiverTel,item.address,item.payType,item.invoice,item.totalAmount,item.freight,item.cartIds,item.status,item.orderId];
     FMDatabaseQueue *queue = [DBHelper getDatabaseQueue];
     [queue inDatabase:^(FMDatabase *db) {
         BOOL flag = [db executeUpdate:sql];

@@ -46,14 +46,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self configDataSource];
 }
 - (void)configDataSource{
-    _dataSource = [NSMutableArray array];
-    NSDictionary *temp = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"DataSource" ofType:@"plist"]];
-    NSArray *arr = [temp objectForKey:@"drink"];
-    for (NSDictionary *dict in arr) {
-        GoodInfoModel *item = [[GoodInfoModel alloc]init];
-        [item setValuesForKeysWithDictionary:dict];
-        [_dataSource addObject:item];
-    }
+    _dataSource = [DataSource getAllData];
     [self.collectionView reloadData];
 }
 

@@ -33,6 +33,7 @@
 #import "RongCloud.h"
 #import "JSONKit.h"
 #import "LoginViewController.h"
+#import "RegisterViewController.h"
 #import "NSObject+Regular.h"
 #import "UserInfoDao.h"
 #import "JNKeychain.h"
@@ -43,6 +44,7 @@
 #import "TotalView.h"
 #import "OrderModel.h"
 #import "OrderDao.h"
+#import "DataSource.h"
 #define screenSize [UIScreen mainScreen].bounds.size
 #define SCREEN_WIDTH  screenSize.width
 #define SCREEN_HEIGHT  screenSize.height
