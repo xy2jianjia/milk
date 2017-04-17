@@ -33,6 +33,8 @@
     [_window makeKeyAndVisible];
     [self configRootViewControllers];
     [self saveTuringRobotInfo];
+    [Bmob registerWithAppKey:@"16c14c987e24fbc1e9faeaa9b1f6a107"];
+    [NSThread sleepForTimeInterval:2];
     return YES;
 }
 - (void)saveTuringRobotInfo{

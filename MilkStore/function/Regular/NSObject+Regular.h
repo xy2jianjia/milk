@@ -100,4 +100,6 @@
 - (NSString *)uuid;
 - (void)saveUserId:(NSInteger )userId;
 - (NSInteger)userId;
+- (void)saveObjectId:(NSString * )objectId;
+- (NSString *)objectId;
 @end

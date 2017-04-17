@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "GoodInfoModel.h"
+
+typedef void(^AddGoodsToCartBlock)(GoodInfoModel *goodInfoModel);
+
 @interface HomeViewCell : UICollectionViewCell
 
 @property (nonatomic,strong) GoodInfoModel *goodInfoModel;
-
+@property (nonatomic,strong) AddGoodsToCartBlock addGoodsToCartBlock;
 @end

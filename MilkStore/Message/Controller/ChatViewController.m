@@ -7,11 +7,9 @@
 //
 
 #import "ChatViewController.h"
-#import "TRRTuringAPIConfig.h"
-#import "TRRTuringRequestManager.h"
+
 @interface ChatViewController ()
-@property (nonatomic,strong) TRRTuringAPIConfig *config;
-@property (nonatomic,strong) TRRTuringRequestManager *apiRequest;
+
 @property (nonatomic,strong) UserInfoModel *userInfo;
 @property (nonatomic,strong) UserInfoModel *targetUserInfo;
 @end
@@ -28,11 +26,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[RCIM sharedRCIM] setReceiveMessageDelegate:self];
-    _userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];
-    _targetUserInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"1001"]];
-    _config = [[TRRTuringAPIConfig alloc]initWithAPIKey:@"5472bea635314686a897db4ff53adef8"];
-    _apiRequest = [[TRRTuringRequestManager alloc] initWithConfig:_config];
+    _userInfo = [UserInfoDao getUserInfoWithUserId:self.userId];
+    _targetUserInfo = [UserInfoDao getUserInfoWithUserId:1001];
     
     
 }

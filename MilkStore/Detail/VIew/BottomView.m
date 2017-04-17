@@ -73,6 +73,12 @@
 - (void)hideBottomView{
     self.hidden = YES;
 }
++ (void)showBottomView{
+    [[BottomView shareView] showBottomView];
+}
+- (void)showBottomView{
+    self.hidden = NO;
+}
 - (void)collectionBtnAction{
     _collectionBlock(YES);
 }

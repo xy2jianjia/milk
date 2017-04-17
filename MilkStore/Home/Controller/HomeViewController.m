@@ -26,8 +26,9 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)sdCycleScrollView{
     CGRect temp = CGRectMake(0, 64, SCREEN_WIDTH, 150);
     NSMutableArray *arr = [NSMutableArray array];
-    for (NSInteger index = 0; index < 4; index ++) {
-        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%ld.jpg",index]];
+    for (NSInteger index = 0; index < 11; index ++) {
+        NSString *name = [NSString stringWithFormat:@"Snip20170413_%02ld.png",index + 1];
+        UIImage *image = [UIImage imageNamed:name];
         [arr addObject:image];
     }
     SDCycleScrollView *scv = [SDCycleScrollView cycleScrollViewWithFrame:temp imageNamesGroup:arr];
@@ -68,7 +69,32 @@ static NSString * const reuseIdentifier = @"Cell";
     HomeViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     GoodInfoModel *item = [_dataSource objectAtIndex:indexPath.item];
     cell.goodInfoModel = item;
+    cell.addGoodsToCartBlock = ^(GoodInfoModel *goodInfoModel) {
+        [self showHudInView:self.view hint:@"请稍候.."];
+        [self addtoCartWithModel:goodInfoModel];
+    };
     return cell;
+}
+- (void)addtoCartWithModel:(GoodInfoModel *)goodInfoModel{
+    UserInfoModel *userInfo = [UserInfoDao getUserInfoWithUserId:self.userId];
+    CartModel *item = [[CartModel alloc]init];
+    item.cartId = [self uuid];
+    item.goodCharater = goodInfoModel.charater;
+    item.goodsName = goodInfoModel.name;
+    item.goodsId = goodInfoModel.id;
+    item.goodImageUrl = goodInfoModel.image;
+    
+    item.price = goodInfoModel.price;
+    item.count = 1;
+    item.userId = userInfo.userId;
+    item.udid = self.imei;
+    
+    [CartDao saveCartInfo:item userId:userInfo.userId];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"setCartBadgeValue" object:nil];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self hideHud];
+        [self showHint:@"已添加到购物车"];
+    });
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     DetailViewController *vc = [[DetailViewController alloc]initWithStyle:(UITableViewStyleGrouped)];

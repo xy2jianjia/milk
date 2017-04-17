@@ -147,6 +147,22 @@ static NSString * const CARTTABLE = @"CARTTABLE";
             
         }
     }];
-    
 }
++ (NSInteger )getTotalCartCount{
+    return [[CartDao shareInstance] getTotalCartCount];
+}
+- (NSInteger )getTotalCartCount{
+    NSString *sql = [NSString stringWithFormat:@"SELECT COUNT(*) FROM CARTTABLE "];
+    __block NSInteger flag = 0;
+    FMDatabaseQueue *queue = [DBHelper getDatabaseQueue];
+    [queue inDatabase:^(FMDatabase *db) {
+        FMResultSet *rs = [db executeQuery:sql];
+        while ([rs next]) {
+            flag = [rs intForColumn:@"COUNT(*)"];
+        }
+        [rs close];
+    }];
+    return flag;
+}
+
 @end

@@ -13,10 +13,13 @@
 @end
 
 @implementation RootViewController
-
+- (void)registerNotification{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setCartBadgeValue) name:@"setCartBadgeValue" object:nil];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configChildControllers];
+    [self registerNotification];
 }
 - (void)configChildControllers{
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
@@ -50,8 +53,18 @@
 //    [self.tabBar setBackgroundImage:[UIImage imageNamed:@"w_tabbar_bg"]];
 //    [self.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor redColor],NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
     self.viewControllers = @[nc1,nc2,nc3,nc4];
-    
+    [self setCartBadgeValue];
 }
+
+- (void)setCartBadgeValue{
+    NSInteger count = [CartDao getTotalCartCount];
+    NSString *countString = [NSString stringWithFormat:@"%ld",count];
+    if (count > 99) {
+        countString = @"99+";
+    }
+     [[[self.viewControllers objectAtIndex:2] tabBarItem] setBadgeValue:countString];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -20,7 +20,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    _userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];
+    _userInfo = [UserInfoDao getUserInfoWithUserId:self.userId];
     NSIndexSet *index = [NSIndexSet indexSetWithIndex:0];
     [self.tableView reloadSections:index withRowAnimation:(UITableViewRowAnimationAutomatic)];
     self.tabBarController.tabBar.hidden = NO;
@@ -91,7 +91,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
-        UserInfoModel *userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];
+        UserInfoModel *userInfo = [UserInfoDao getUserInfoWithUserId:self.userId];
         if (!userInfo) {
             RegisterViewController *vc = [[RegisterViewController alloc]init];
             UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];

@@ -94,20 +94,9 @@
     _priceLabel.text = [NSString stringWithFormat:@"¥ %.2f",price];
 }
 - (void)addToCart{
-    UserInfoModel *userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];
-    CartModel *item = [[CartModel alloc]init];
-    item.cartId = [self uuid];
-    item.goodCharater = _goodInfoModel.charater;
-    item.goodsName = _goodInfoModel.name;
-    item.goodsId = _goodInfoModel.id;
-    item.goodImageUrl = _goodInfoModel.image;
-
-    item.price = _goodInfoModel.price;
-    item.count = 1;
-    item.userId = userInfo.userId;
-    item.udid = self.imei;
-
-    [CartDao saveCartInfo:item userId:userInfo.userId];
+    _addGoodsToCartBlock(_goodInfoModel);
+    
+    
 //    [self showHint:@"已添加到购物车"];
 }
 

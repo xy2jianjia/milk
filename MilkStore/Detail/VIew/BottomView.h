@@ -19,4 +19,5 @@ typedef void(^BuyBlock)(BOOL flag);
 
 + (void)configBottomViewWithCollectionBlock:(CollectionBlock )collectionBlock cartBlock:(CartBlock)cartBlock buyBlock:(BuyBlock )buyBlock;
 + (void)hideBottomView;
++ (void)showBottomView;
 @end

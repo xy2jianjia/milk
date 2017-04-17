@@ -46,4 +46,11 @@
  */
 + (CartModel *)getCartInfoWithCartId:(NSString *)cartId;
 + (void) deleteCartInfoWithId:(NSString *)cartId;
+
+/**
+ 获取购物车总量
+
+ @return 
+ */
++ (NSInteger )getTotalCartCount;
 @end

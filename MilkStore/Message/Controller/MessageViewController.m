@@ -8,11 +8,9 @@
 
 #import "MessageViewController.h"
 #import "MessageViewCell.h"
-#import "TRRTuringAPIConfig.h"
-#import "TRRTuringRequestManager.h"
+
 @interface MessageViewController ()
-@property (nonatomic,strong) TRRTuringAPIConfig *config;
-@property (nonatomic,strong) TRRTuringRequestManager *apiRequest;
+
 @end
 
 @implementation MessageViewController
@@ -21,8 +19,7 @@
     [super viewDidLoad];
     self.navigationItem.title = @"消息";
     [self.tableView registerClass:[MessageViewCell class] forCellReuseIdentifier:@"cell"];
-    _config = [[TRRTuringAPIConfig alloc]initWithAPIKey:@"5472bea635314686a897db4ff53adef8"];
-    _apiRequest = [[TRRTuringRequestManager alloc] initWithConfig:_config];
+
 }
 
 - (void)didReceiveMemoryWarning {

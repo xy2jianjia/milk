@@ -55,12 +55,15 @@
     [UserInfoDao saveUserInfo:userInfo];
     [self saveUserId:userInfo.userId];
     
+    [BmobDB saveUserInfoToBmob:userInfo];
+    
     LoginViewController *vc = [[LoginViewController alloc]init];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
     [self presentViewController:nav animated:YES completion:^{
         
     }];
 }
+
 - (void)dismiss{
     [self dismissViewControllerAnimated:YES completion:^{
         

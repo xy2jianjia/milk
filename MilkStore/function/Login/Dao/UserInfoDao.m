@@ -107,11 +107,11 @@ static NSString * const USERTABLE = @"USERTABLE";
     }];
     return item;
 }
-+ (UserInfoModel *)getUserInfoWithUserId:(NSString *)userId{
++ (UserInfoModel *)getUserInfoWithUserId:(NSInteger )userId{
     return [[UserInfoDao shareInstance] getUserInfoWithUserId:userId];
 }
-- (UserInfoModel *)getUserInfoWithUserId:(NSString *)userId{
-    NSString * sql=[NSString stringWithFormat:@"SELECT * FROM USERTABLE where userId='%@'",userId];
+- (UserInfoModel *)getUserInfoWithUserId:(NSInteger)userId{
+    NSString * sql=[NSString stringWithFormat:@"SELECT * FROM USERTABLE where userId='%ld'",userId];
     FMDatabaseQueue *queue = [DBHelper getDatabaseQueue];
     __block UserInfoModel *item = nil;
     [queue inDatabase:^(FMDatabase *db) {

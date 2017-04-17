@@ -20,7 +20,7 @@
 @implementation LoginViewController
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    _userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];
+    _userInfo = [UserInfoDao getUserInfoWithUserId:self.userId];
     _userNameTextField.text = _userInfo.userName;
     _passwordTextField.text = _userInfo.password;
 }

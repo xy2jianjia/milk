@@ -126,4 +126,10 @@
 - (NSInteger)userId{
     return [[NSUserDefaults  standardUserDefaults] integerForKey:@"userId"];
 }
+- (void)saveObjectId:(NSString *)objectId{
+    [[NSUserDefaults  standardUserDefaults] setObject:objectId forKey:@"objectId"];
+}
+- (NSString *)objectId{
+    return [[NSUserDefaults  standardUserDefaults] objectForKey:@"objectId"];
+}
 @end

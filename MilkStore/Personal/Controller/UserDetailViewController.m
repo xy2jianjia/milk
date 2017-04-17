@@ -17,7 +17,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    _userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];
+    _userInfo = [UserInfoDao getUserInfoWithUserId:self.userId];
     [self.tableView reloadData];
 }
 - (void)viewDidLoad {
@@ -144,6 +144,7 @@
     NSString *fullPath = [cache stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",self.imei]];
     NSData *fileData = UIImageJPEGRepresentation(image, 1);
     [fileData writeToFile:fullPath atomically:NO];
+    [BmobDB saveFile:fullPath];
 }
 - (NSString *)cachePath{
     NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];

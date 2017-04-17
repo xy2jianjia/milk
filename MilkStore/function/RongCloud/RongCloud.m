@@ -37,14 +37,14 @@
 }
 - (void)getToken{
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
-//    if ([token length] > 0) {
-//        [self connectRCServer];
-//    }else{
-    UserInfoModel *currentUser = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",[self userId]]];
-    [HttpOperation asyncGetTokenWithUserInfo:currentUser completed:^(NSString *token, NSInteger code, NSString *msg) {
-        [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"token"];
+    if ([token length] > 0) {
         [self connectRCServerWithToken:token];
-    }];
+    }else{
+        UserInfoModel *currentUser = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",[self userId]]];
+        [HttpOperation asyncGetTokenWithUserInfo:currentUser completed:^(NSString *token, NSInteger code, NSString *msg) {
+            [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"token"];
+            [self connectRCServerWithToken:token];
+        }];
     
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        UserInfoModel *turingUser = [UserInfoDao getUserInfoWithUserId:@"1001"];
@@ -55,17 +55,33 @@
 //        
 //    });
     
-//    }
+    }
 }
 
 - (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *userInfo))completion{
     
-    UserInfoModel *userInfo = [UserInfoDao getUserInfoWithUserId:userId];
-    RCUserInfo *targetUser = [[RCUserInfo alloc]init];
-    targetUser.userId = [NSString stringWithFormat:@"%ld",userInfo.userId];
-    targetUser.name = userInfo.nickName;
-    targetUser.portraitUri = userInfo.headerImageUrl;
-    completion(targetUser);
+    UserInfoModel *userInfo = [UserInfoDao getUserInfoWithUserName:userId];
+    if (!userInfo) {
+        [BmobDB getUserInfoWithUserName:userId completed:^(UserInfoModel *userInfo1) {
+            if (userInfo1) {
+                [UserInfoDao saveUserInfo:userInfo1];
+                RCUserInfo *targetUser = [[RCUserInfo alloc]init];
+                targetUser.userId = [NSString stringWithFormat:@"%@",userInfo1.userName];
+                targetUser.name = userInfo1.nickName;
+                targetUser.portraitUri = userInfo1.headerImageUrl;
+                completion(targetUser);
+            }
+        }];
+    }else{
+        RCUserInfo *targetUser = [[RCUserInfo alloc]init];
+        targetUser.userId = [NSString stringWithFormat:@"%@",userInfo.userName];
+        targetUser.name = userInfo.nickName;
+        targetUser.portraitUri = userInfo.headerImageUrl;
+        completion(targetUser);
+    }
+    
+    
+    
 }
 
 

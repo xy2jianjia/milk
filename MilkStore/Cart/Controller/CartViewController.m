@@ -120,6 +120,7 @@
         [_dataSource removeObjectAtIndex:indexPath.section];
         NSIndexSet *indexset = [NSIndexSet indexSetWithIndex:indexPath.section];
         [tableView deleteSections:indexset withRowAnimation:UITableViewRowAnimationFade];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"setCartBadgeValue" object:nil];
     }
 }
 

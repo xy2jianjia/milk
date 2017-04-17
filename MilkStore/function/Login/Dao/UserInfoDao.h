@@ -46,5 +46,5 @@
  @param item 
  */
 + (void)updateUserInfo:(UserInfoModel *)item;
-+ (UserInfoModel *)getUserInfoWithUserId:(NSString *)userId;
++ (UserInfoModel *)getUserInfoWithUserId:(NSInteger )userId;
 @end

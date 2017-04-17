@@ -26,9 +26,10 @@
         [[[UIAlertView alloc]initWithTitle:@"提示" message:@"填写昵称" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil, nil] show];
         return;
     }
-    UserInfoModel *userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];
+    UserInfoModel *userInfo = [UserInfoDao getUserInfoWithUserId:self.userId];
     userInfo.nickName = nickName;
     [UserInfoDao updateUserInfo:userInfo];
+    [BmobDB updateUserInfo:userInfo];
     [self showHint:@"保存成功"];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.navigationController popViewControllerAnimated:YES];

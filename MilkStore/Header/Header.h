@@ -45,6 +45,9 @@
 #import "OrderModel.h"
 #import "OrderDao.h"
 #import "DataSource.h"
+
+#import "BmobDB.h"
+#import <BmobSDK/Bmob.h>
 #define screenSize [UIScreen mainScreen].bounds.size
 #define SCREEN_WIDTH  screenSize.width
 #define SCREEN_HEIGHT  screenSize.height

@@ -22,7 +22,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
-    
+    [BottomView showBottomView];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -33,7 +33,15 @@
     [super viewDidLoad];
     _imageArr = [NSMutableArray array];
     for (NSInteger index = 0; index < 5; index ++) {
-        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"1_%ld.jpg",(index + 1)]];
+        NSString *name = [NSString stringWithFormat:@"d_%ld_%02ld.jpg",_goodModel.id,(index + 1)];
+        UIImage *image = [UIImage imageNamed:name];
+        if (!image) {
+            name = [NSString stringWithFormat:@"d_%ld_%02ld.png",_goodModel.id,(index + 1)];
+        }
+        image = [UIImage imageNamed:name];
+        if (!image) {
+            break;
+        }
         [_imageArr addObject:image];
     }
     [self.tableView registerClass:[DetailImageGroupCell class] forCellReuseIdentifier:@"cell"];
@@ -53,7 +61,7 @@
         conversationVC.title = @"酷乐创客服";
         [self.navigationController pushViewController:conversationVC animated:YES];
     } cartBlock:^(BOOL flag) {
-        UserInfoModel *userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];
+        UserInfoModel *userInfo = [UserInfoDao getUserInfoWithUserId:self.userId];
         CartModel *item = [[CartModel alloc]init];
         item.cartId = [self uuid];
         item.goodCharater = _goodModel.charater;

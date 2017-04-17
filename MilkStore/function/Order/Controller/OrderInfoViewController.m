@@ -26,7 +26,7 @@
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
     _saveOrderView.hidden = NO;
-    _userInfo = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",self.userId]];
+    _userInfo = [UserInfoDao getUserInfoWithUserId:self.userId];
     NSIndexSet *index = [NSIndexSet indexSetWithIndex:0];
     [self.tableView reloadSections:index withRowAnimation:UITableViewRowAnimationFade];
 }
