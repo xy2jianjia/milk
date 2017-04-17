@@ -136,9 +136,15 @@
     
 }
 - (NSString *)getImage{
-    NSString *cache = [self cachePath];
-    NSString *fullPath = [cache stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",self.imei]];
-    return fullPath;
+    NSString *path = _userInfo.headerImageUrl;
+    if ([path length] == 0) {
+        NSString *cache = [self cachePath];
+        NSString *fullPath = [cache stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",self.imei]];
+        return fullPath;
+    }else{
+        return path;
+    }
+    
 }
 - (NSString *)cachePath{
     NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];

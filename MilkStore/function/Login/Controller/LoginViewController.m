@@ -65,7 +65,29 @@
             [[[UIAlertView alloc]initWithTitle:@"提示" message:@"密码错误" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil, nil] show];
         }
     }else{
-        [[[UIAlertView alloc]initWithTitle:@"提示" message:@"用户信息不存在，请先注册" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil, nil] show];
+        [BmobDB getUserInfoWithUserName:userName completed:^(UserInfoModel *userInfo1) {
+            if (!userInfo1) {
+                [[[UIAlertView alloc]initWithTitle:@"提示" message:@"用户信息不存在，请先注册" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil, nil] show];
+            }else{
+                if ([password isEqualToString:userInfo1.password]) {
+                    [[[UIAlertView alloc]initWithTitle:@"提示" message:@"登录成功" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil, nil] show];
+                    [self saveUserId:userInfo1.userId];
+                    BOOL flag = [UserInfoDao checkUserWithUsertId:userInfo1.userId];
+                    if (!flag) {
+                        [UserInfoDao saveUserInfo:userInfo1];
+                    }
+                    [RongCloud getToken];
+                    
+                    [self dismissViewControllerAnimated:YES completion:^{
+                        
+                    }];
+                }else{
+                    [[[UIAlertView alloc]initWithTitle:@"提示" message:@"密码错误" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil, nil] show];
+                }
+            }
+        }];
+        
+        
     }
     
 }

@@ -16,7 +16,7 @@
  *
  *  @return BOOL
  */
-+ (BOOL) checkUserWithUsertId:(NSString *)userId;
++ (BOOL) checkUserWithUsertId:(NSInteger)userId;
 /**
  保存用户信息
  

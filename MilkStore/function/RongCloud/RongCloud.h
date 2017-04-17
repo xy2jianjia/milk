@@ -10,4 +10,5 @@
 
 @interface RongCloud : NSObject
 + (void)initializationRC;
++ (void)getToken;
 @end

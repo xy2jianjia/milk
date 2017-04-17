@@ -83,28 +83,11 @@
                     userInfo.nickName = [object objectForKey:@"nickName"];
                     userInfo.headerImageUrl = [object objectForKey:@"headerImageUrl"];
                     userInfo.password = [object objectForKey:@"password"];
+                    [self saveObjectId:object.objectId];
                     break;
                 }
             }
             completed(userInfo);
-        }
-    }];
-    //查找GameScore表里面id为0c6db13c的数据
-    [bquery getObjectInBackgroundWithId:self.objectId block:^(BmobObject *object,NSError *error){
-        if (error){
-            //进行错误处理
-            completed(nil);
-        }else{
-            //表里有id为0c6db13c的数据
-            if (object) {
-                UserInfoModel *userInfo = [[UserInfoModel alloc]init];
-                userInfo.userId = [[object objectForKey:@"userId"] integerValue];
-                userInfo.userName = [object objectForKey:@"userName"];
-                userInfo.nickName = [object objectForKey:@"nickName"];
-                userInfo.headerImageUrl = [object objectForKey:@"headerImageUrl"];
-                userInfo.password = [object objectForKey:@"password"];
-                completed(userInfo);
-            }
         }
     }];
 }

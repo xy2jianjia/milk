@@ -80,7 +80,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MilkStore/function/RongCloud/RongCloud.m"
@@ -164,11 +164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MilkStore/function/BmobDB/BmobDB.m"
-            timestampString = "514108932.816653"
+            timestampString = "514110587.243203"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "-saveFile:"
             landmarkType = "7">
          </BreakpointContent>
@@ -176,63 +176,63 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MilkStore/function/RongCloud/RongCloud.m"
-            timestampString = "514109310.198693"
+            timestampString = "514110587.243203"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "-getUserInfoWithUserId:completion:"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "-getToken"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MilkStore/function/RongCloud/RongCloud.m"
-            timestampString = "514109310.198693"
+            filePath = "MilkStore/function/Login/Controller/LoginViewController.m"
+            timestampString = "514110091.186624"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "-getUserInfoWithUserId:completion:"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "-loginAction:"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[RongCloud getUserInfoWithUserId:completion:]"
+                  symbolName = "-[LoginViewController loginAction:]"
                   moduleName = "MilkStore"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/monan/Desktop/Yang/MilkStore/MilkStore/function/RongCloud/RongCloud.m"
-                  timestampString = "514109479.959099"
+                  urlString = "file:///Users/monan/Desktop/Yang/MilkStore/MilkStore/function/Login/Controller/LoginViewController.m"
+                  timestampString = "514110229.876504"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "1178">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__35-[LoginViewController loginAction:]_block_invoke_2"
+                  moduleName = "MilkStore"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/monan/Desktop/Yang/MilkStore/MilkStore/function/Login/Controller/LoginViewController.m"
+                  timestampString = "514110229.877906"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "69"
                   endingLineNumber = "69"
-                  offsetFromSymbolStart = "147">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__46-[RongCloud getUserInfoWithUserId:completion:]_block_invoke"
-                  moduleName = "MilkStore"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/monan/Desktop/Yang/MilkStore/MilkStore/function/RongCloud/RongCloud.m"
-                  timestampString = "514109479.960461"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "44">
+                  offsetFromSymbolStart = "47">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -243,13 +243,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MilkStore/function/RongCloud/RongCloud.m"
-            timestampString = "514109168.849413"
+            filePath = "MilkStore/function/Login/Controller/LoginViewController.m"
+            timestampString = "514110245.559322"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "-getToken"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "-loginAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MilkStore/function/RongCloud/RongCloud.m"
+            timestampString = "514111717.853458"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-getUserInfoWithUserId:completion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

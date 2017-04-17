@@ -35,6 +35,9 @@
 -(void)onRCIMReceiveMessage:(RCMessage *)message left:(int)left{
     NSLog(@"%@",message.content);
 }
++ (void)getToken{
+    [[RongCloud shareInstance] getToken];
+}
 - (void)getToken{
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
     if ([token length] > 0) {

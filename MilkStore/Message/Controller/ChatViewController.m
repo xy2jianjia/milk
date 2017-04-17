@@ -27,9 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _userInfo = [UserInfoDao getUserInfoWithUserId:self.userId];
-    _targetUserInfo = [UserInfoDao getUserInfoWithUserId:1001];
-    
-    
+    _targetUserInfo = [UserInfoDao getUserInfoWithUserName:self.targetId];
+    self.title = _targetUserInfo.nickName;
 }
 
 //-(void)didSendMessage:(NSInteger)status content:(RCMessageContent *)messageContent{

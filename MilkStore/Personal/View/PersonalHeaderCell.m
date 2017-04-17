@@ -45,11 +45,17 @@
     
 }
 -(void)setUserInfo:(UserInfoModel *)userInfo{
-    UIImage *image = [UIImage imageWithContentsOfFile:userInfo.headerImageUrl];
-    if (!image) {
-        image = [UIImage imageNamed:@"list_item_icon"];
+    NSString *headerUrl = userInfo.headerImageUrl;
+    if ([headerUrl containsString:@"http"]) {
+        [_headerImageV sd_setImageWithURL:[NSURL URLWithString:headerUrl] placeholderImage:[UIImage imageNamed:@"list_item_icon"]];
+    }else{
+        UIImage *image = [UIImage imageWithContentsOfFile:userInfo.headerImageUrl];
+        if (!image) {
+            image = [UIImage imageNamed:@"list_item_icon"];
+        }
+        _headerImageV.image = image;
     }
-    _headerImageV.image = image;
+    
     if (_hideLabel) {
         _userNameLabel.hidden = YES;
         _userIdLabel.hidden = YES;

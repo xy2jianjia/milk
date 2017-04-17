@@ -27,11 +27,11 @@ static NSString * const USERTABLE = @"USERTABLE";
     
     [UserInfoDao createUserTableWithSQL:createTableSQL tableName:USERTABLE];
 }
-+ (BOOL) checkUserWithUsertId:(NSString *)userId{
++ (BOOL) checkUserWithUsertId:(NSInteger )userId{
     return [[UserInfoDao shareInstance] checkUserWithUsertId:userId];
 }
-- (BOOL) checkUserWithUsertId:(NSString *)userId{
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM USERTABLE WHERE userId = '%@'",userId];
+- (BOOL) checkUserWithUsertId:(NSInteger)userId{
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM USERTABLE WHERE userId = '%ld'",userId];
     __block BOOL flag = NO;
     FMDatabaseQueue *queue = [DBHelper getDatabaseQueue];
     [queue inDatabase:^(FMDatabase *db) {
@@ -132,7 +132,7 @@ static NSString * const USERTABLE = @"USERTABLE";
     [[UserInfoDao shareInstance] updateUserInfo:item];
 }
 - (void)updateUserInfo:(UserInfoModel *)item{
-    NSString * sql = [NSString stringWithFormat:@"UPDATE USERTABLE SET userId = '%ld',userName = '%@',password = '%@',headerImageUrl = '%@',nickName = '%@' WHERE udid = '%@'",item.userId,item.userName,item.password,item.headerImageUrl,item.nickName,self.imei];
+    NSString * sql = [NSString stringWithFormat:@"UPDATE USERTABLE SET userId = '%ld',userName = '%@',password = '%@',headerImageUrl = '%@',nickName = '%@' WHERE userName = '%@'",item.userId,item.userName,item.password,item.headerImageUrl,item.nickName,item.userName];
     FMDatabaseQueue *queue = [DBHelper getDatabaseQueue];
     [queue inDatabase:^(FMDatabase *db) {
         BOOL flag = [db executeUpdate:sql];
