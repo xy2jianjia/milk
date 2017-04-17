@@ -144,7 +144,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MilkStore/Personal/Controller/UserDetailViewController.m"
@@ -180,11 +180,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MilkStore/function/RongCloud/RongCloud.m"
-            timestampString = "514108932.34135"
+            timestampString = "514109310.198693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "-getUserInfoWithUserId:completion:"
             landmarkType = "7">
          </BreakpointContent>
@@ -196,11 +196,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MilkStore/function/RongCloud/RongCloud.m"
-            timestampString = "514108934.157138"
+            timestampString = "514109310.198693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "-getUserInfoWithUserId:completion:"
             landmarkType = "7">
             <Locations>
@@ -212,11 +212,11 @@
                   moduleName = "MilkStore"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/monan/Desktop/Yang/MilkStore/MilkStore/function/RongCloud/RongCloud.m"
-                  timestampString = "514108934.477719"
+                  timestampString = "514109479.959099"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
                   offsetFromSymbolStart = "147">
                </Location>
                <Location
@@ -227,14 +227,30 @@
                   moduleName = "MilkStore"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/monan/Desktop/Yang/MilkStore/MilkStore/function/RongCloud/RongCloud.m"
-                  timestampString = "514108934.479454"
+                  timestampString = "514109479.960461"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
                   offsetFromSymbolStart = "44">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MilkStore/function/RongCloud/RongCloud.m"
+            timestampString = "514109168.849413"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "-getToken"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

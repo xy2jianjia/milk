@@ -56,7 +56,7 @@
         if ([password isEqualToString:userInfo.password]) {
             [[[UIAlertView alloc]initWithTitle:@"提示" message:@"登录成功" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil, nil] show];
             
-            
+            [RongCloud initializationRC];
             
             [self dismissViewControllerAnimated:YES completion:^{
                 

@@ -62,6 +62,9 @@
     if (count > 99) {
         countString = @"99+";
     }
+    if (count == 0) {
+        countString = nil;
+    }
      [[[self.viewControllers objectAtIndex:2] tabBarItem] setBadgeValue:countString];
 }
 

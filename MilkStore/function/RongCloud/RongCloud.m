@@ -40,7 +40,11 @@
     if ([token length] > 0) {
         [self connectRCServerWithToken:token];
     }else{
-        UserInfoModel *currentUser = [UserInfoDao getUserInfoWithUserId:[NSString stringWithFormat:@"%ld",[self userId]]];
+        UserInfoModel *currentUser = [UserInfoDao getUserInfoWithUserId:[self userId]];
+        if (!currentUser) {
+            NSLog(@"未注册");
+            return;
+        }
         [HttpOperation asyncGetTokenWithUserInfo:currentUser completed:^(NSString *token, NSInteger code, NSString *msg) {
             [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"token"];
             [self connectRCServerWithToken:token];
